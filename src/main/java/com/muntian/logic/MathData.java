@@ -67,6 +67,13 @@ public class MathData implements Observable {
 		notifyObservers(getParams());
 	}
 
+	public void setAllParams(double firstOperand, double secondOperand, String sign) {
+		this.firstOperand = firstOperand;
+		this.secondOperand = secondOperand;
+		this.sign = sign;
+		notifyObservers(getParams());
+	}
+	
 	public MathData() {
 		observers = new LinkedList<>();
 	}
