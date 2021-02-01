@@ -209,11 +209,10 @@ public class MathOperationPanel extends Composite {
 		public void handleEvent(Event event) {
 			switch (event.type) {
 			case SWT.Selection:
-
-				mathData.setFirstOperand(Double.parseDouble(firstNumber.getText()));
-				mathData.setSecondOperand(Double.parseDouble(secondNumber.getText()));
-				mathData.setSign(mathOperator.getText());
-
+				double fOp = Double.parseDouble(firstNumber.getText());
+				double sOp = Double.parseDouble(secondNumber.getText());
+				String sign = mathOperator.getText();
+				mathData.setAllParams(fOp, sOp, sign);
 				break;
 			}
 		}
