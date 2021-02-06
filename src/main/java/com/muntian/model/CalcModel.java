@@ -1,11 +1,14 @@
-package com.muntian.logic;
+package com.muntian.model;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class MathData implements Observable {
+import com.muntian.interfaces.Observable;
+import com.muntian.interfaces.Observer;
+
+public class CalcModel implements Observable {
 	
 	private List<Observer> observers;
 	
@@ -67,14 +70,14 @@ public class MathData implements Observable {
 		notifyObservers(getParams());
 	}
 
-	public void setAllParams(double firstOperand, double secondOperand, String sign) {
-		this.firstOperand = firstOperand;
-		this.secondOperand = secondOperand;
-		this.sign = sign;
+	public void setAllParams(Map<String, String> params) {
+		this.firstOperand = Double.parseDouble(params.get("firstOperand"));
+		this.secondOperand = Double.parseDouble(params.get("secondOperand"));
+		this.sign = params.get("sign");
 		notifyObservers(getParams());
 	}
 	
-	public MathData() {
+	public CalcModel() {
 		observers = new LinkedList<>();
 	}
 	

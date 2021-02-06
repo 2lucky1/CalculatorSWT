@@ -3,6 +3,8 @@ package com.muntian.logic;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.muntian.interfaces.MathOperation;
+
 public abstract class AbstractCalculator {
 
 	protected Map<String, MathOperation> mathOperationsMap;
@@ -18,8 +20,6 @@ public abstract class AbstractCalculator {
 	 * @return result of operation
 	 */
 	public abstract double makeCalculation(double firstNumber, double secondNumber, String sign);
-
-	public abstract void creatOperationsMap();
 
 	protected Map<String, MathOperation> creatMainOperationsMap() {
 		mathOperationsMap = new HashMap<>();

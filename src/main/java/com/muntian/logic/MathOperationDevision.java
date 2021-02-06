@@ -1,5 +1,7 @@
 package com.muntian.logic;
 
+import com.muntian.interfaces.MathOperation;
+
 public class MathOperationDevision implements MathOperation {
 
 	@Override

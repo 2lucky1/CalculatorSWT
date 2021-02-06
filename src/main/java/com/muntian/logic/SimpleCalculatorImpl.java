@@ -1,9 +1,11 @@
 package com.muntian.logic;
 
+import com.muntian.interfaces.MathOperation;
+
 public class SimpleCalculatorImpl extends AbstractCalculator {
 
     public SimpleCalculatorImpl() {
-        creatOperationsMap();
+        creatMainOperationsMap();
     }
 
     @Override
@@ -19,8 +21,4 @@ public class SimpleCalculatorImpl extends AbstractCalculator {
         return mathOperation.calculateResult(firstNumber, secondNumber);
     }
 
-    @Override
-    public void creatOperationsMap() {
-        mathOperationsMap = creatMainOperationsMap();
-    }
 }

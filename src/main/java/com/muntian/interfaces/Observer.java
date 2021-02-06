@@ -1,4 +1,4 @@
-package com.muntian.logic;
+package com.muntian.interfaces;
 
 import java.util.Map;
 
