@@ -1,4 +1,4 @@
-package com.muntian.logic;
+package com.muntian.interfaces;
 
 public interface MathOperation {
     

@@ -1,7 +1,11 @@
 package com.muntian.logic;
 
 import java.util.Map;
-import com.muntian.ui.MainPanel;
+
+import com.muntian.interfaces.Observer;
+import com.muntian.model.CalcModel;
+import com.muntian.ui.CalcViewMgr;
+import com.muntian.ui.MainPanelUI;
 
 public class Calculations implements Observer {
 
@@ -9,10 +13,11 @@ public class Calculations implements Observer {
 	private String mathOperator;
 	private double secondNumber;
 	private double result;
-	private boolean isflyModeOn;
 
-	private MathData mathData;
+	private CalcModel mathData;
 	private AbstractCalculator calculator;
+	
+	private CalcViewMgr _calcViewMgr;
 
 	public Calculations(AbstractCalculator calculator) {
 		this.calculator = calculator;
@@ -20,6 +25,8 @@ public class Calculations implements Observer {
 
 	@Override
 	public void update(Map params) {
+		
+		_calcViewMgr = CalcViewMgr.getInstance();
 		
 		this.firstNumber = (double) params.get("firstOperand");
 		this.mathOperator = (String) params.get("sign");
@@ -31,12 +38,12 @@ public class Calculations implements Observer {
 	}
 	
 	private void setResultIntoResultField(double result) {
-		MainPanel.getInstance().getMathOperationPanel().updateResultField(String.valueOf(result));
+		_calcViewMgr.getMathPanel().updateResultField(String.valueOf(result));
 	}
 	
 	private void setResultIntoHistory(double result) {
-		MainPanel.getInstance().getHistoryPanel()
-		.addStatementToHistory(firstNumber + mathOperator + secondNumber + " = " + result);
+		_calcViewMgr.getHistoryPanel()
+		            .addStatementToHistory(firstNumber + mathOperator + secondNumber + " = " + result);
 	}
 	
 

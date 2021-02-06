@@ -5,7 +5,12 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
-import com.muntian.ui.MainPanel;
+import com.muntian.logic.Calculations;
+import com.muntian.logic.SimpleCalculatorImpl;
+import com.muntian.model.CalcModel;
+import com.muntian.model.CalcModelMgr;
+import com.muntian.ui.CalcViewMgr;
+import com.muntian.ui.MainPanelUI;
 
 public class Main {
 	
@@ -26,7 +31,13 @@ public class Main {
 		GridLayout gridLayout = new GridLayout();
 		shell.setLayout(gridLayout);
 		
-		MainPanel mainPanel = MainPanel.getInstance();
+		CalcViewMgr.getInstance().createUI(shell);
+		
+		CalcModel model = CalcModelMgr.getInstance().getCalcModel();
+		Calculations calculations = new Calculations(new SimpleCalculatorImpl());
+		model.registerObserver(calculations);
+		
+//		MainPanelUI mainPanel = MainPanelUI.getInstance();
 
 		shell.setLocation(750, 200);
 		shell.pack();
